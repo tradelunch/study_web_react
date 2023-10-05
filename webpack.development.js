@@ -1,45 +1,10 @@
-const { merge } = require('webpack-merge');
+const path = require('path');
 const common = require('./webpack.common.js');
-const webpack = require('webpack');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const { merge } = require('webpack-merge');
 
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'eval-source-map',
-    module: {
-        rules: [
-            // jsLoader config
-            {
-                test: /\.(js|ts)$/,
-                exclude:
-                    /node_modules[/\\](?!react-native-vector-icons|react-native-calendars|react-native-swipe-gestures|react-native-reanimated|react-native-drawer)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            '@babel/preset-react',
-                            '@babel/preset-typescript',
-                        ],
-                        plugins: [
-                            require.resolve('react-refresh/babel'),
-                        ].filter(Boolean),
-                    },
-                },
-            },
-        ],
-    },
-    plugins: [
-        new ReactRefreshWebpackPlugin(),
-        new webpack.DefinePlugin({
-            process: {
-                env: {
-                    __DEV__: true,
-                    __PROD__: false,
-                    __STAGING__: false,
-                },
-            },
-        }),
-    ].filter(Boolean),
     stats: {
         preset: 'errors-only', // 오류만 // 'minimal' | 'errors-only'
         // 통계 사전 설정
@@ -88,6 +53,7 @@ module.exports = merge(common, {
         // 요약에 빌드 해시 표시
     },
     devServer: {
+        watchFiles: ['src/**/*', 'public/**/*', 'dist/**/*'],
         client: {
             progress: true, // Prints compilation progress in percentage in the browser.
             logging: 'error', // 'log' | 'info' | 'warn' | 'error' | 'none' | 'verbose'
@@ -98,10 +64,24 @@ module.exports = merge(common, {
         },
         open: false, // Tells dev-server to open the browser after server had been started.
         historyApiFallback: true, // 404일때 index.html을 표시하려면 true, 복수의 경로를 적용하려면 객체
-        static: './',
-        hot: 'only', // 'only', boolean = true
-        liveReload: false,
+        static: [
+            {
+                directory: path.resolve(__dirname, 'public'),
+                publicPath: '/public',
+            },
+            {
+                directory: path.resolve(__dirname, 'assets'),
+                publicPath: '/assets',
+            },
+        ],
+        hot: 'only', // 'only', boolean = true // reload only changes
+        liveReload: false, // refresh entire app
         compress: true, // gzip 압축 활성화
         https: false, // self-signed의 경우 true, 인증 기관의 경우 객체
+        port: 3000,
+        // publicPath: '/',
+        proxy: {
+            '/api': 'http://localhost:3000', // ex
+        },
     },
 });

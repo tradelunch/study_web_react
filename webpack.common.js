@@ -1,24 +1,45 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 console.log('::: process.env.NODE_ENV: ', process.env.NODE_ENV);
 
 module.exports = {
-    entry: {
-        main: path.resolve(__dirname, './src/index.js'),
-    },
-    output: {
-        filename: 'bundle.[id]_[name]_[contenthash].js',
-        path: path.join(__dirname, '/dist'),
-        publicPath: '/',
-    },
     target: 'web',
-    // TODO: check
     optimization: {
         splitChunks: {
             chunks: 'all',
         },
+    },
+    entry: {
+        main: path.resolve(__dirname, './src/index.js'),
+    },
+    output: {
+        filename: '[name].bundle.[contenthash].js',
+        path: path.join(__dirname, '/dist'),
+        publicPath: '/',
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.(?:js|mjs|cjs|jsx|ts|tsx)$/i,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+            {
+                test: /\.(sa|sc|c)ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
+            },
+            { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: 'file' },
+        ],
     },
     resolve: {
         alias: {
@@ -26,58 +47,18 @@ module.exports = {
                 path.resolve(process.cwd(), '.'),
                 path.resolve(process.cwd(), 'src'),
             ],
-            '@env': '.env',
         },
-        extensions: ['.ts', '.tsx', '.js', '.json'],
+        extensions: ['.js', '.ts', '.jsx', '.tsx'],
         fallback: { https: false },
     },
-    module: {
-        rules: [
-            // jsLoader config
-            {
-                test: /\.(js|ts)$/,
-                exclude:
-                    /node_modules[/\\](?!react-native-vector-icons|react-native-calendars|react-native-swipe-gestures|react-native-reanimated|react-native-drawer)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            '@babel/preset-react',
-                            '@babel/preset-typescript',
-                        ],
-                    },
-                },
-            },
-            // imageLoader config
-            {
-                test: /\.(gif|jpe?g|png|svg)$/,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        esModule: false,
-                    },
-                },
-            },
-            // classLoader config
-            {
-                test: /\.(sa|sc|c)ss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-            // fontLoader config
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
-            },
-        ],
-    },
     plugins: [
-        new HTMLWebpackPlugin({
-            // title: 'adriel',
+        new HtmlWebpackPlugin({
+            title: 'Webpack Boilerplate',
             template: path.resolve(__dirname, './public/index.html'),
             filename: 'index.html',
             inject: 'body',
+            favicon: 'favicon/favicon.ico',
         }),
-        new FaviconsWebpackPlugin(path.join(__dirname, 'adriel.svg')),
-    ].filter(Boolean),
+        new CleanWebpackPlugin(),
+    ],
 };

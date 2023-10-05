@@ -4,9 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "ss": "cross-env NODE_ENV=development webpack serve --hot --no-live-reload --config webpack.config.js",
-        "bb": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-        "start": "cross-env NODE_ENV=development webpack serve --open --config webpack.development.js",
+        "start": "cross-env NODE_ENV=development webpack serve --hot --no-live-reload --config webpack.development.js",
         "build": "cross-env NODE_ENV=development webpack --config webpack.development.js",
         "prod": "cross-env NODE_ENV=production webpack --config webpack.production.js",
         "test": "jest",
