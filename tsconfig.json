@@ -16,8 +16,7 @@
         "jsx": "preserve",
         "incremental": true,
         "paths": {
-            "@/*": ["./*"],
-            "@/icons/svg/*": ["./assets/img/svg_icons/*"]
+            "@/*": ["*", "src/*"]
         }
     },
     "include": ["**/*.ts", "**/*.tsx"],
