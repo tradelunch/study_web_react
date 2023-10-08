@@ -25,7 +25,9 @@ import {
 
 import * as R from 'ramda';
 
-export const useDragNDropWithRxJs = () => {
+type Props = string;
+
+export const useDragNDropWithRxJs = (wrapperScroll?: string) => {
     const [ref, ref$] = useObservableRef<any>();
     const [bounds, bounds$] = useObservableRef<any>(document);
 
@@ -118,7 +120,16 @@ export const useDragNDropWithRxJs = () => {
 
                     const newY = (function (boundRect, item, bounds) {
                         // const top = boundRect.top;
-                        const top = Math.max(bounds.offsetTop, boundRect.top);
+                        const top = (function getTop(
+                            wrapperScroll,
+                            boundRect,
+                            bounds
+                        ) {
+                            if (wrapperScroll === 'scroll')
+                                return boundRect.top;
+                            return Math.max(bounds.offsetTop, boundRect.top);
+                        })(wrapperScroll, boundRect, bounds);
+
                         let newY = y - shiftY - top;
 
                         // bottom
@@ -176,6 +187,7 @@ export const useDragNDropWithRxJs = () => {
     // });
 
     return {
+        draggableRef: ref,
         ref,
         ref$,
         pos,

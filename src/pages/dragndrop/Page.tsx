@@ -6,13 +6,13 @@ import { useObservableRef } from 'observable-hooks';
 type Props = {};
 
 export const Page = (props: Props) => {
-    const { draggableRef, ref$, pos, bounds } = useDragNDropWithRxJs();
+    const { ref, ref$, pos, bounds } = useDragNDropWithRxJs();
 
     return (
         <Wrapper ref={bounds}>
             <Item
                 pos={pos}
-                ref={draggableRef}
+                ref={ref}
             >
                 Draggable Item
             </Item>
