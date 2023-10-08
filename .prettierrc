@@ -5,7 +5,7 @@
     "singleQuote": true,
     "bracketSpacing": true,
     "bracketSameLine": false,
-    "arrowParens": "avoid",
+    "arrowParens": "always",
     "printWidth": 80,
     "singleAttributePerLine": true
 }
