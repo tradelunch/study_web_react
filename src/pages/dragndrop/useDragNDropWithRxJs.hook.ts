@@ -4,30 +4,30 @@ import {
     useObservableState,
     useSubscription,
 } from 'observable-hooks';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect } from 'react';
 import {
-    Subject,
     distinctUntilChanged,
     filter,
     first,
     fromEvent,
     map,
     merge,
-    pluck,
     share,
     shareReplay,
-    startWith,
     switchMap,
     takeUntil,
-    tap,
     withLatestFrom,
 } from 'rxjs';
 
 import * as R from 'ramda';
 
-type Props = string;
+type Props = {
+    overflow?: string;
+};
 
-export const useDragNDropWithRxJs = (wrapperScroll?: string) => {
+export const useDragNDropWithRxJs = (props: Props = {}) => {
+    const { overflow = 'auto' } = props;
+
     const [ref, ref$] = useObservableRef<any>();
     const [bounds, bounds$] = useObservableRef<any>(document);
 
@@ -121,14 +121,17 @@ export const useDragNDropWithRxJs = (wrapperScroll?: string) => {
                     const newY = (function (boundRect, item, bounds) {
                         // const top = boundRect.top;
                         const top = (function getTop(
-                            wrapperScroll,
+                            overflow,
                             boundRect,
                             bounds
                         ) {
-                            if (wrapperScroll === 'scroll')
-                                return boundRect.top;
+                            console.log({
+                                top: boundRect.top,
+                                offsetTop: bounds.offsetTop,
+                            });
+                            if (overflow === 'scroll') return boundRect.top;
                             return Math.max(bounds.offsetTop, boundRect.top);
-                        })(wrapperScroll, boundRect, bounds);
+                        })(overflow, boundRect, bounds);
 
                         let newY = y - shiftY - top;
 
