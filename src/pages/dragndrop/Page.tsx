@@ -1,15 +1,19 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDragNDropWithRxJs } from './useDragNDropWithRxJs.hook';
 import { useObservableRef } from 'observable-hooks';
 
 type Props = {};
 
 export const Page = (props: Props) => {
-    const { draggableRef, ref$, pos, bounds } = useDragNDropWithRxJs();
+    const boundsRef = useRef<HTMLElement>(null);
+    const { draggableRef, ref$, pos } = useDragNDropWithRxJs({
+        bounds: boundsRef?.current,
+        overflow: 'scroll',
+    });
 
     return (
-        <Wrapper ref={bounds}>
+        <Wrapper ref={boundsRef}>
             <Item
                 pos={pos}
                 ref={draggableRef}

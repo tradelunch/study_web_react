@@ -25,18 +25,31 @@ module.exports = {
             {
                 test: /\.(?:js|mjs|cjs|jsx|ts|tsx)$/i,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                },
+                use: [
+                    {
+                        loader: 'babel-loader',
+                    },
+                ],
             },
             {
                 test: /\.(sa|sc|c)ss$/i,
                 use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader',
+                    { loader: 'style-loader' },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                        },
+                    },
+                    { loader: 'postcss-loader' },
+                    { loader: 'sass-loader' },
                 ],
+                // [
+                //     'style-loader',
+                //     'css-loader',
+                //     'postcss-loader',
+                //     'sass-loader',
+                // ],
             },
             { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: 'file' },
         ],

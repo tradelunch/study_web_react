@@ -78,7 +78,7 @@ module.exports = merge(common, {
         liveReload: false, // refresh entire app
         compress: true, // gzip 압축 활성화
         https: false, // self-signed의 경우 true, 인증 기관의 경우 객체
-        port: 3000,
+        port: 8080,
         // publicPath: '/',
         proxy: {
             '/api': 'http://localhost:3000', // ex
