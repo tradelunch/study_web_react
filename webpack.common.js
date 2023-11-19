@@ -51,7 +51,10 @@ module.exports = {
                 //     'sass-loader',
                 // ],
             },
-            { test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, loader: 'file' },
+            {
+                test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
