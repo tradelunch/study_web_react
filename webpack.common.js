@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 console.log('::: process.env.NODE_ENV: ', process.env.NODE_ENV);
 
+const ASSET_PATH = process.env.ASSET_PATH || '/';
+
 module.exports = {
     target: 'web',
     optimization: {
@@ -17,7 +19,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.[contenthash].js',
         path: path.join(__dirname, '/dist'),
-        publicPath: '/',
+        publicPath: ASSET_PATH,
     },
 
     module: {
