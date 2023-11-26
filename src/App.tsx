@@ -1,10 +1,11 @@
 import React from 'react';
-import { DragNDrop } from '@/pages/dragndrop';
+import { Test } from './pages/test';
 
 export const App = () => {
     return (
         <>
-            <DragNDrop />
+            {/* <DragNDrop /> */}
+            <Test />
         </>
     );
 };
