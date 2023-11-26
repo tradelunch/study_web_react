@@ -57,6 +57,7 @@ module.exports = {
             files: ['**/*.ts', '**/*.tsx'],
             plugins: [
                 '@typescript-eslint',
+                '@typescript-eslint/internal',
                 'deprecation',
                 'eslint-comments',
                 'eslint-plugin',
