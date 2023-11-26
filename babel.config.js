@@ -1,4 +1,5 @@
 module.exports = {
+    targets: '> 0.25%, not dead',
     presets: [
         ['@babel/preset-env'],
         [
@@ -13,7 +14,6 @@ module.exports = {
         ],
         ['@babel/preset-typescript'],
     ],
-    targets: '> 0.25%, not dead',
 
     // TODO does not need
     // plugins: [

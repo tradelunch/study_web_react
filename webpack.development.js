@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const path = require('path');
 const common = require('./webpack.common.js');
 const { merge } = require('webpack-merge');
@@ -53,7 +55,7 @@ module.exports = merge(common, {
         // 요약에 빌드 해시 표시
     },
     devServer: {
-        watchFiles: ['src/**/*', 'public/**/*', 'dist/**/*'],
+        watchFiles: ['src/**/*', 'public/**/*'],
         client: {
             progress: true, // Prints compilation progress in percentage in the browser.
             logging: 'error', // 'log' | 'info' | 'warn' | 'error' | 'none' | 'verbose'
