@@ -13,6 +13,8 @@ module.exports = {
         ],
         ['@babel/preset-typescript'],
     ],
+    targets: '> 0.25%, not dead',
+
     // TODO does not need
     // plugins: [
     //     [
