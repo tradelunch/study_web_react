@@ -17,7 +17,14 @@
         "incremental": true,
         "paths": {
             "@/*": ["*", "src/*"]
-        }
+        },
+        "allowImportingTsExtensions": true, // it allows you to import a file with .ts extension
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types",
+            "**/types",
+            "./typings"
+        ]
     },
     "include": ["**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules", "*.stories.*", "*.spec.*", "tio-*", "*.mock.*"]

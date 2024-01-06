@@ -1,0 +1,1 @@
+export { WorkerTest } from './Page';

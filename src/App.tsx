@@ -1,11 +1,13 @@
 import React from 'react';
-import { Test } from './pages/test';
+import { WorkerTest } from './pages/worker';
 
 export const App = () => {
     return (
         <>
             {/* <DragNDrop /> */}
-            <Test />
+            {/* <Test /> */}
+            {/* <Scroll /> */}
+            <WorkerTest />
         </>
     );
 };

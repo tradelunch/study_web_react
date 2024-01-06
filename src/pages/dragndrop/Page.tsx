@@ -6,7 +6,7 @@ import { useObservableRef } from 'observable-hooks';
 type Props = {};
 
 export const Page = (props: Props) => {
-    const boundsRef = useRef<HTMLElement>(null);
+    const boundsRef = useRef<HTMLElement | null>(null);
     const { draggableRef, ref$, pos } = useDragNDropWithRxJs({
         bounds: boundsRef?.current,
         overflow: 'scroll',

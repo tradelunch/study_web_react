@@ -42,7 +42,7 @@ module.exports = {
                 args: 'none',
             },
         ],
-        eqeqeq: 'warn',
+        'eqeqeq': 'warn',
         'react/prop-types': 'off',
         'react/no-unknown-property': [
             'error',
@@ -72,6 +72,8 @@ module.exports = {
                 tsconfigRootDir: process.cwd(),
             },
             rules: {
+                'import/extensions': ['.js', '.ts'], // Add '.ts' here if it's not present        
+
                 'no-console': ['warn', { allow: ['warn', 'error'] }],
                 'no-param-reassign': 'error',
 
@@ -144,6 +146,8 @@ module.exports = {
                         checksVoidReturn: false,
                     },
                 ],
+                '@typescript-eslint/allowImportingTsExtensions': false,
+
             },
         },
     ],

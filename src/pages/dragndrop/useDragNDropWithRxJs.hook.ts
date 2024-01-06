@@ -61,7 +61,7 @@ function toPos(obs$: any) {
 
 type Props = {
     overflow?: string;
-    bounds?: string | HTMLElement;
+    bounds?: string | HTMLElement | null;
 };
 
 export const useDragNDropWithRxJs = (props: Props = {}) => {

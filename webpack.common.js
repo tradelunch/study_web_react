@@ -24,6 +24,15 @@ module.exports = {
 
     module: {
         rules: [
+            /**
+             * webapck5 do not need this
+             * Place this *before* the `ts-loader`.
+             *
+             */
+            {
+                test: /\.worker\.ts$/,
+                loader: 'worker-loader',
+            },
             {
                 test: /\.(?:js|mjs|cjs|jsx|ts|tsx)$/i,
                 exclude: /node_modules/,
