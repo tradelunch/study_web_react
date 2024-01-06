@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const worker = new Worker(new URL('./webpack5_worker.ts', import.meta.url));
 

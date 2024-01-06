@@ -149,6 +149,7 @@ export const useDragNDropWithRxJs = (props: Props = {}) => {
             map((event: any) => {
                 const currentTargetRect =
                     event.currentTarget.getBoundingClientRect();
+
                 const shift = {
                     shiftX: event.clientX - currentTargetRect.left,
                     shiftY: event.clientY - currentTargetRect.top,
@@ -175,41 +176,24 @@ export const useDragNDropWithRxJs = (props: Props = {}) => {
                     const boundRect = bounds.getBoundingClientRect();
 
                     const newY = (function (boundRect, item, bounds) {
-                        // const top = boundRect.top;
                         const top = (function getTop(
                             overflow,
                             boundRect,
                             bounds
                         ) {
+                            console.log('::: ', overflow, boundRect);
+
                             if (overflow === 'scroll') return boundRect.top;
                             return Math.max(bounds.offsetTop, boundRect.top);
                         })(overflow, boundRect, bounds);
 
-                        let newY =
-                            y -
-                            shiftY +
-                            bounds.offsetTop -
-                            boundRect.top +
-                            bounds.scrollTop;
-
-                        console.log({
-                            boundRect,
-                        });
-
-                        // TODO check
-                        // with scroll
-                        // + bounds.scrollTop
-                        // bounds.clientHeight? scrollHeight?
-
-                        // bottom
-                        // const newBottom = newY + item.offsetHeight;
-                        // if (newBottom > boundRect.height) {
+                        // top
+                        let newY = y - shiftY - top + bounds.scrollTop;
                         newY = Math.min(
                             newY,
                             bounds.scrollHeight -
                                 item.getBoundingClientRect().height
                         );
-                        // }
 
                         // top
                         newY = Math.max(newY, 0);
@@ -219,13 +203,15 @@ export const useDragNDropWithRxJs = (props: Props = {}) => {
 
                     const newX = (function (boundRect, item, bounds) {
                         let newX = x - shiftX - boundRect.left;
+                        // console.log({
+                        //     pos,
+                        //     left: boundRect.left,
+                        // });
 
                         // left
                         newX = Math.max(newX, 0);
 
                         // right
-                        // if (newX > boundRect.width - item.offsetWidth) {
-                        // newX = boundRect.width - item.offsetWidth;
                         newX = Math.min(
                             newX,
                             bounds.clientWidth -

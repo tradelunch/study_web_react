@@ -4,7 +4,7 @@ import { DeferredValueTest } from './DeferredValue';
 
 type Props = {};
 
-export const Page = (props: Props) => {
+export const HookTest = (props: Props) => {
     return (
         <>
             <img
@@ -16,4 +16,4 @@ export const Page = (props: Props) => {
     );
 };
 
-export default Page;
+export default HookTest;

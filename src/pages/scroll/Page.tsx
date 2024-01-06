@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {};
 
-export const Page = (props: Props) => {
+export const CreateScroll = (props: Props) => {
     return (
         <div
             style={{
@@ -63,4 +63,4 @@ export const Page = (props: Props) => {
     );
 };
 
-export default Page;
+export default CreateScroll;
