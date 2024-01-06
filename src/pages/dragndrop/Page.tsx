@@ -13,6 +13,10 @@ import { BoundHasNoScroll } from './BoundHasNoScroll';
 
 type Props = {};
 
+/**
+ * bound container should not have scroll if bound's some parents have scroll && 
+ * if boundContainer has scroll then there should no scroll for html or other parent element
+ */
 export const Page = (props: Props) => {
     return (
         <Container>
