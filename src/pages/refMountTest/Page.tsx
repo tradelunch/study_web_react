@@ -17,12 +17,15 @@ export const Page = (props: Props) => {
                 old('old: ', ...rest);
 
                 if (typeof message == 'object') {
+                    // @ts-ignore
                     logger.innerHTML +=
                         (JSON && JSON.stringify
                             ? JSON.stringify(message)
                             : message) + '<br />';
                 } else {
+                    // @ts-ignore
                     logger.innerHTML += message + '<br />';
+                    // @ts-ignore
                     logger.innerHTML += rest + '<br />';
                 }
             };
@@ -30,6 +33,7 @@ export const Page = (props: Props) => {
     }, []);
 
     useEffect(() => {
+        // @ts-ignore
         console.log('no args:: ', ref.current.offsetWidth);
         console.log('no effect:: ', ref, ref.current);
     }, []);
@@ -115,9 +119,7 @@ export const Page = (props: Props) => {
                     border: '1px solid green',
                     overflow: 'auto',
                 }}
-            >
-
-            </div>
+            ></div>
         </div>
     );
 };

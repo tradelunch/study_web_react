@@ -4,6 +4,7 @@ import { HookTest } from './pages/hooktest';
 import { CreateScroll } from './pages/scroll';
 import { DragNDrop } from './pages/dragndrop';
 import { RefTest } from './pages/refMountTest';
+import { FullPageTest } from './pages/fullpageTest';
 
 export const App = () => {
     return (
@@ -12,7 +13,8 @@ export const App = () => {
             {/* <CreateScroll /> */}
             {/* <HookTest /> */}
             {/* <WorkerTest /> */}
-            {<RefTest />}
+            {/* {<RefTest />} */}
+            <FullPageTest />
         </>
     );
 };
