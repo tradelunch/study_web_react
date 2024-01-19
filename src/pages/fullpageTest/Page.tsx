@@ -11,7 +11,7 @@ export const Page = (props: Props) => {
                     style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        width: '100%',
+                        width: '100%', // to make width full width with max-width: 1500px
                         minHeight: '30vh',
                     }}
                 >
