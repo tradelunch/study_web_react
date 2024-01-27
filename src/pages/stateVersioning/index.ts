@@ -1,0 +1,1 @@
+export { CallFuncAndSateUpdate } from './page';
