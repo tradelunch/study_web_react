@@ -6,6 +6,7 @@ import { DragNDrop } from './pages/dragndrop';
 import { RefTest } from './pages/refMountTest';
 import { FullPageTest } from './pages/fullpageTest';
 import { CallFuncAndSateUpdate } from './pages/stateVersioning/page';
+import { UseEffect } from './pages/useEffect';
 
 export const App = () => {
     return (
@@ -16,7 +17,8 @@ export const App = () => {
             {/* <WorkerTest /> */}
             {/* {<RefTest />} */}
             {/* <FullPageTest /> */}
-            <CallFuncAndSateUpdate />
+            {/* <CallFuncAndSateUpdate /> */}
+            <UseEffect />
         </>
     );
 };
