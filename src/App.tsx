@@ -7,6 +7,7 @@ import { RefTest } from './pages/refMountTest';
 import { FullPageTest } from './pages/fullpageTest';
 import { CallFuncAndSateUpdate } from './pages/stateVersioning/page';
 import { UseEffect } from './pages/useEffect';
+import { UseIntervalTiming } from './pages/useInterval';
 
 export const App = () => {
     return (
@@ -18,7 +19,8 @@ export const App = () => {
             {/* {<RefTest />} */}
             {/* <FullPageTest /> */}
             {/* <CallFuncAndSateUpdate /> */}
-            <UseEffect />
+            {/* <UseEffect /> */}
+            <UseIntervalTiming />
         </>
     );
 };
