@@ -1,0 +1,17 @@
+.clock {
+    background-color: lightblue;
+    width: 500px;
+    height: 300px;
+    margin: auto;
+}
+
+.clock .tooltip {
+    color: green;
+    font-weight: bold;
+    display: none;
+}
+
+.clock:hover .tooltip {
+    display: flex;
+    color: coral;
+}

@@ -8,6 +8,7 @@ import { FullPageTest } from './pages/fullpageTest';
 import { CallFuncAndSateUpdate } from './pages/stateVersioning/page';
 import { UseEffect } from './pages/useEffect';
 import { UseIntervalTiming } from './pages/useInterval';
+import { ClockTest } from './pages/clock';
 
 export const App = () => {
     return (
@@ -20,7 +21,8 @@ export const App = () => {
             {/* <FullPageTest /> */}
             {/* <CallFuncAndSateUpdate /> */}
             {/* <UseEffect /> */}
-            <UseIntervalTiming />
+            {/* <UseIntervalTiming /> */}
+            <ClockTest />
         </>
     );
 };
