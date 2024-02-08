@@ -1,19 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 type Props = {};
+
+const init = performance.now();
 
 export const ClockRequestAnimation = (props: Props) => {
     const [date, setDate] = useState(() => new Date());
 
+    // const prevRef = useRef<number>(init); // or we can use prefRef other than prev inside useEffect
     useEffect(() => {
-        let start = performance.now();
+        let prev = performance.now();
 
         const animate = () => {
-            const end = performance.now();
+            const now = performance.now();
 
-            if (end - start >= 1000) {
+            if (now - prev >= 1000) {
                 setDate(new Date());
-                start = performance.now();
+                prev = now;
             }
 
             requestAnimationFrame(animate);
