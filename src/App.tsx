@@ -10,6 +10,7 @@ import { UseEffect } from './pages/useEffect';
 import { UseIntervalTiming } from './pages/useInterval';
 import { ClockTest } from './pages/clock';
 import { Performance } from './pages/performance';
+import { FlexEllipsis } from './pages/flexWithEllipsis';
 
 export const App = () => {
     return (
@@ -24,7 +25,8 @@ export const App = () => {
             {/* <UseEffect /> */}
             {/* <UseIntervalTiming /> */}
             {/* <ClockTest /> */}
-            <Performance />
+            {/* <Performance /> */}
+            <FlexEllipsis />
         </>
     );
 };
