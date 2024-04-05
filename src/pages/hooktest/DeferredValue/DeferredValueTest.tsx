@@ -11,6 +11,8 @@ export const DeferredValueTest = (props: Props) => {
 
     const isStale = text !== deferredText;
 
+    console.log(isStale, text, deferredText);
+
     return (
         <div>
             <div>
